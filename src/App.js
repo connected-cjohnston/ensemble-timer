@@ -13,9 +13,10 @@ function App() {
       <div className="App">
         <Typography variant="h1">Ensemble Programming Timer</Typography>
         <Participants setParticipants={setParticipants} />
-        <Roles />
+        <Roles participants={participants} />
         <Timer />
       </div>
+      <pre>{JSON.stringify(participants)}</pre>
     </Container>
   );
 }

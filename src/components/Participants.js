@@ -3,12 +3,14 @@ import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
 export default function Participants({ setParticipants }) {
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("submitted...");
-  }
+  const [names, setNames] = useState("");
 
-  const [participantsField, setParticipantsField] = useState("");
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(names);
+    const participants = names.split(", ");
+    setParticipants(participants);
+  }
 
   return (
     <>
@@ -27,9 +29,12 @@ export default function Participants({ setParticipants }) {
           label="Participants"
           variant="filled"
           fullWidth
-          onChange={event => setParticipantsField(event.target.value)}
+          value={names}
+          onChange={event => setNames(event.target.value)}
         />
-        <Button variant="contained">Submit</Button>
+        <Button type="submit" variant="contained">
+          Submit
+        </Button>
       </Box>
     </>
   );
