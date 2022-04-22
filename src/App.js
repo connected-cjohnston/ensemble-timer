@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Container, Typography } from "@mui/material";
+import "./App.css";
+import Participants from "./components/Participants";
+import Roles from "./components/Roles";
+import Timer from "./components/Timer";
 
 function App() {
+  const [participants, setParticipants] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fixed>
+      <div className="App">
+        <Typography variant="h1">Ensemble Programming Timer</Typography>
+        <Participants setParticipants={setParticipants} />
+        <Roles />
+        <Timer />
+      </div>
+    </Container>
   );
 }
 
