@@ -8,13 +8,21 @@ import Timer from "./components/Timer";
 function App() {
   const [participants, setParticipants] = useState([]);
 
+  function handleNext() {
+    console.log('handleNext');
+    const firstElement = participants.shift();
+    const list = [...participants];
+    list.push(firstElement);
+    setParticipants(list);
+  }
+
   return (
-    <Container fixed>
+    <Container maxWidth="sm">
       <div className="App">
-        <Typography variant="h1">Ensemble Programming Timer</Typography>
+        <Typography variant="h3">EPT</Typography>
         <Participants setParticipants={setParticipants} />
         <Roles participants={participants} />
-        <Timer />
+        <Timer handleNext={handleNext} />
       </div>
       <pre>{JSON.stringify(participants)}</pre>
     </Container>

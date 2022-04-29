@@ -15,15 +15,15 @@ export default function Participants({ setParticipants }) {
   return (
     <>
       <Typography variant="h4">Participants</Typography>
-      <Typography variant="p">
-        Enter the participants aa a comma separated list
-      </Typography>
       <Box
         component="form"
         noValidate
         autoComplete="off"
         onSubmit={handleSubmit}
       >
+        <Typography variant="body1">
+          Enter the participants as a comma separated list
+        </Typography>
         <TextField
           id="participants"
           label="Participants"
