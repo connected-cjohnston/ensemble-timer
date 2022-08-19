@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Grid, IconButton, Typography } from "@mui/material";
+import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
@@ -39,15 +39,21 @@ export default function Timer({ handleNext }) {
       </Grid>
       <Grid item xs={12}>
         <Typography variant="body1" textAlign="center" marginTop="-50px">
-          <IconButton aria-label="play" size="large" onClick={handlePlay}>
-            <PlayArrowIcon fontSize="inherit" />
-          </IconButton>
-          <IconButton aria-label="pause" size="large" onClick={handlePause}>
-            <PauseIcon fontSize="inherit" />
-          </IconButton>
-          <IconButton aria-label="replay" size="large" onClick={handleStart}>
-            <ReplayIcon fontSize="inherit" />
-          </IconButton>
+          <Tooltip title="Start timer without rotating roles" arrow>
+            <IconButton aria-label="play" size="large" onClick={handlePlay}>
+              <PlayArrowIcon fontSize="inherit" />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Pause timer" arrow>
+            <IconButton aria-label="pause" size="large" onClick={handlePause}>
+              <PauseIcon fontSize="inherit" />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Reset the timer and rotate participant roles" arrow>
+            <IconButton aria-label="replay" size="large" onClick={handleStart}>
+              <ReplayIcon fontSize="inherit" />
+            </IconButton>
+          </Tooltip>
         </Typography>
       </Grid>
     </>
