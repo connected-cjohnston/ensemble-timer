@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import useSound from 'use-sound';
 import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -26,6 +27,10 @@ export default function Timer({ handleNext }) {
     clockRef.current.pause();
   }
 
+  function signalCompletion() {
+
+  }
+
   return (
     <>
       <Grid item xs={12}>
@@ -33,6 +38,7 @@ export default function Timer({ handleNext }) {
           <Countdown date={Date.now() + 8 * MINUTES}
                      ref={clockRef}
                      autoStart={false}
+                     onComplete={signalCompletion}
                      renderer={({ minutes, seconds }) => (<span>{minutes}:{zeroPad(seconds)}</span>)}
           />
         </Typography>
