@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import useSound from 'use-sound';
+import switchSfx from '../sound/switch.mp3';
 import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -6,11 +8,12 @@ import PauseIcon from "@mui/icons-material/Pause";
 import Countdown, { zeroPad } from "react-countdown";
 
 export default function Timer({ handleNext }) {
-  const MICROSECONDS = 1000;
-  const SECONDS = 60;
-  const MINUTES = SECONDS * MICROSECONDS;
+  const SECONDS = 1000;
+  const MINUTES = 60 * SECONDS;
 
   const clockRef = useRef();
+
+  const [play] = useSound(switchSfx);
 
   function handleStart() {
     clockRef.current.stop();
@@ -26,6 +29,10 @@ export default function Timer({ handleNext }) {
     clockRef.current.pause();
   }
 
+  function signalCompletion() {
+    play();
+  }
+
   return (
     <>
       <Grid item xs={12}>
@@ -33,6 +40,7 @@ export default function Timer({ handleNext }) {
           <Countdown date={Date.now() + 8 * MINUTES}
                      ref={clockRef}
                      autoStart={false}
+                     onComplete={signalCompletion}
                      renderer={({ minutes, seconds }) => (<span>{minutes}:{zeroPad(seconds)}</span>)}
           />
         </Typography>
