@@ -23,9 +23,11 @@ function App() {
           <Typography variant="h1" fontSize="2em" fontWeight="bolder">Ensemble Pairing Timer</Typography>
         </Grid>
         <Grid item xs={4}>
-          <Button variant="text" onClick={() => setEditParticipants(true)}>
-            Edit
-          </Button>
+          {!editParticipants &&
+            <Button variant="text" onClick={() => setEditParticipants(true)}>
+              Edit
+            </Button>
+          }
         </Grid>
         <Participants setParticipants={setParticipants} editParticipants={editParticipants}
                       setEditParticipants={setEditParticipants} />
