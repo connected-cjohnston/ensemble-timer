@@ -8,6 +8,7 @@ import Timer from "./components/Timer";
 function App() {
   const [participants, setParticipants] = useState([]);
   const [editParticipants, setEditParticipants] = useState(true);
+  const [timerMinutes, setTimerMinutes] = useState(8);
 
   function handleNext() {
     const firstElement = participants.shift();
@@ -29,10 +30,13 @@ function App() {
             </Button>
           }
         </Grid>
-        <Participants setParticipants={setParticipants} editParticipants={editParticipants}
-                      setEditParticipants={setEditParticipants} />
+        <Participants
+          setParticipants={setParticipants}
+          editParticipants={editParticipants}
+          setEditParticipants={setEditParticipants}
+          setTimerMinutes={setTimerMinutes} />
         <Roles participants={participants} />
-        <Timer handleNext={handleNext} />
+        <Timer handleNext={handleNext} tMinutes={timerMinutes} />
       </Grid>
     </Container>
   );
