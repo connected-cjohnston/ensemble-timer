@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import useSound from 'use-sound';
-import switchSfx from '../sound/switch.mp3';
+import switchSfx from '../sound/magic-mallet-6262.mp3';
 import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -10,6 +10,7 @@ import Countdown, { zeroPad } from "react-countdown";
 export default function Timer({ handleNext }) {
   const SECONDS = 1000;
   const MINUTES = 60 * SECONDS;
+  const TIMER_MINUTES = 8 * MINUTES
 
   const clockRef = useRef();
 
@@ -37,7 +38,7 @@ export default function Timer({ handleNext }) {
     <>
       <Grid item xs={12}>
         <Typography variant="body1" fontSize="8rem" textAlign="center">
-          <Countdown date={Date.now() + 8 * MINUTES}
+          <Countdown date={Date.now() + TIMER_MINUTES}
                      ref={clockRef}
                      autoStart={false}
                      onComplete={signalCompletion}
