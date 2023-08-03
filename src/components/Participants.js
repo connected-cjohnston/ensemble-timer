@@ -20,7 +20,7 @@ export default function Participants({ setParticipants, editParticipants, setEdi
   function handleSubmit(event) {
     event.preventDefault();
 
-    const participants = names.split(", ");
+    const participants = names.replace(" ", "").split(",");
     setParticipants(participants);
     setTimerMinutes(minutes);
 
